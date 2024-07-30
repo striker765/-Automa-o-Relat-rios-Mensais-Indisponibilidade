@@ -1,31 +1,44 @@
-# Coleta de Dados SQL e Envio por Email
+# Coleta Automatizada de Indisponibilidades do Zabbix
 
-Este script Python se conecta a um banco de dados MySQL, executa uma consulta SQL, formata os resultados em um arquivo CSV e envia esses resultados por email usando SMTP.
+Este projeto em Python automatiza a coleta de dados de indisponibilidade do sistema de monitoramento Zabbix. Ele gera um relatório detalhado de 30 dias que documenta todo o período de indisponibilidade de um monitoramento específico.
 
 ## Descrição
 
-O projeto visa automatizar o processo de coleta de dados de um banco MySQL, formatação em CSV e envio por email.
+O objetivo deste script é conectar-se ao banco de dados do Zabbix, executar uma consulta SQL para extrair informações precisas sobre indisponibilidades registradas no sistema, e formatar esses dados em um arquivo CSV estruturado. O arquivo CSV é então enviado automaticamente por email aos destinatários configurados, proporcionando uma visão clara e detalhada do histórico de falhas de monitoramento.
+
+## Funcionalidades
+
+- Conexão segura ao banco de dados do Zabbix usando `mysql-connector-python`.
+- Formatação automática dos resultados da consulta em um arquivo CSV.
+- Envio automatizado por email do arquivo CSV gerado como anexo usando `smtplib`.
+- Registro detalhado de logs para monitoramento da execução do script e captura de erros.
 
 ## Requisitos
 
 - Python 3.x
-- mysql-connector-python
-- secure-smtplib
+- Bibliotecas Python: `mysql-connector-python`, `secure-smtplib`
 
 ## Configuração
 
-1. Crie um arquivo `config.py` na raiz do projeto conforme o exemplo fornecido.
-2. Configure as variáveis dentro de `config.py` com seus próprios detalhes de conexão MySQL e configurações de email.
+1. **Configurações do MySQL (Zabbix)**:
 
-Exemplo de `config.py`:
+   Configure as variáveis no arquivo `config.py` com os detalhes de conexão ao banco de dados do Zabbix.
 
-```python
-MYSQL_CONFIG = {
-    'host': 'seu_host_mysql',
-    'database': 'seu_banco_de_dados',
-    'user': 'seu_usuario_mysql',
-    'password': 'sua_senha_mysql'
-}
+   Exemplo de `config.py`:
+
+   ```python
+   MYSQL_CONFIG = {
+       'host': 'seu_host_zabbix',
+       'database': 'nome_banco_zabbix',
+       'user': 'seu_usuario_zabbix',
+       'password': 'sua_senha_zabbix'
+   }
+
+Configurações do Servidor SMTP:
+
+Configure as variáveis no arquivo config.py com os detalhes do servidor SMTP para enviar os relatórios por email.
+
+Exemplo de config.py:
 
 EMAIL_CONFIG = {
     'smtp_server': 'smtp.servidor.com',
@@ -36,22 +49,35 @@ EMAIL_CONFIG = {
     'recipients': ['destinatario1@example.com', 'destinatario2@example.com']
 }
 
+Arquivos de Log e CSV:
+
+Configure as variáveis no arquivo config.py com os caminhos dos arquivos de log e CSV.
+
+Exemplo de config.py:
+
+FILE_CONFIG = {
+    'log_file': 'logs/arquivo_de_log.txt',
+    'csv_file': 'resultado_indisponibilidade.csv'
+}
 
 Instalação
 Clone o repositório:
+
 bash
 Copiar código
 git clone https://github.com/seu-usuario/nome-do-repositorio.git
-Navegue até o diretório:
+Navegue até o diretório do projeto:
+
 bash
 Copiar código
 cd nome-do-repositorio
-Instale as dependências:
+Instale as dependências necessárias:
+
 bash
 Copiar código
 pip install -r requirements.txt
 Uso
-Para executar o script, use:
+Para executar o script e gerar o relatório de indisponibilidade do Zabbix, utilize o seguinte comando:
 
 bash
 Copiar código
@@ -61,7 +87,3 @@ Contribuições são bem-vindas! Sinta-se à vontade para enviar pull requests c
 
 Licença
 Este projeto está licenciado sob a MIT License.
-FILE_CONFIG = {
-    'log_file': 'logs/arquivo_de_log.txt',
-    'csv_file': 'resultado_consulta.csv'
-}
