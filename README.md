@@ -1,9 +1,8 @@
 Coleta de Dados SQL e Envio por Email
-Visão Geral
-Este script Python foi desenvolvido para realizar consultas SQL em um banco de dados MySQL, formatar os resultados em um arquivo CSV e enviar esses resultados por email usando um servidor SMTP configurado.
+Este script Python foi desenvolvido para conectar-se a um banco de dados MySQL, executar uma consulta SQL, formatar os resultados em um arquivo CSV e enviar esses resultados por email usando um servidor SMTP configurado.
 
 Funcionalidades
-Conexão ao banco de dados MySQL para executar uma consulta SQL especificada.
+Conexão ao banco de dados MySQL para executar consultas SQL.
 Formatação dos resultados da consulta em um arquivo CSV.
 Envio automático por email do arquivo CSV gerado como anexo.
 Registro de logs para monitorar a execução do script e capturar erros.
@@ -14,12 +13,10 @@ Python 3.x
 Bibliotecas Python:
 mysql-connector-python: Para conectar ao MySQL.
 smtplib: Para enviar emails.
-Além disso, você deve configurar corretamente os arquivos de configuração conforme descrito abaixo.
-
 Configuração
 Arquivo config.py:
 
-Dentro do diretório do projeto, crie um arquivo config.py com as seguintes variáveis configuradas:
+Crie um arquivo config.py na raiz do projeto com as seguintes variáveis configuradas:
 
 python
 Copiar código
@@ -31,13 +28,13 @@ MYSQL_CONFIG = {
     'password': 'sua_senha_mysql'
 }
 
-# Configurações do Outlook (ou outro servidor SMTP)
+# Configurações do servidor SMTP (Outlook, Gmail, etc.)
 EMAIL_CONFIG = {
-    'smtp_server': 'smtp.outlook.com',  # servidor SMTP
-    'smtp_port': 587,                   # porta do servidor SMTP
-    'username': 'seu_email@outlook.com',
+    'smtp_server': 'smtp.servidor.com',  # servidor SMTP
+    'smtp_port': 587,                    # porta do servidor SMTP
+    'username': 'seu_email@example.com',
     'password': 'sua_senha_de_email',
-    'sender': 'seu_email@outlook.com',  # remetente do email
+    'sender': 'seu_email@example.com',   # remetente do email
     'recipients': ['destinatario1@example.com', 'destinatario2@example.com']  # lista de destinatários
 }
 
@@ -46,7 +43,7 @@ FILE_CONFIG = {
     'log_file': 'arquivo_de_log.txt',
     'csv_file': 'resultado_consulta.csv'
 }
-Certifique-se de substituir os valores dentro de cada dicionário (MYSQL_CONFIG, EMAIL_CONFIG, FILE_CONFIG) pelos seus próprios detalhes de configuração.
+Substitua os valores dentro de cada dicionário (MYSQL_CONFIG, EMAIL_CONFIG, FILE_CONFIG) pelos seus próprios detalhes de configuração.
 
 Instalação de Dependências:
 
@@ -59,18 +56,18 @@ bash
 Copiar código
 pip install secure-smtplib
 Utilização
-Para executar o script, basta executar o arquivo main.py:
+Para executar o script, use o seguinte comando no terminal:
 
 bash
 Copiar código
 python main.py
-O script realizará automaticamente a consulta SQL configurada, formatará os resultados em um arquivo CSV e enviará por email aos destinatários especificados em EMAIL_CONFIG.
+O script realizará a consulta SQL configurada, formatará os resultados em um arquivo CSV e enviará por email aos destinatários especificados em EMAIL_CONFIG.
 
 Logs
 Todos os logs da execução do script são registrados no arquivo arquivo_de_log.txt, localizado no diretório do projeto. Verifique este arquivo em caso de erros ou para acompanhar o progresso das execuções.
 
-Melhorias Futuras
-Implementação de testes unitários para garantir a robustez do código.
-Refatoração para tornar o código mais modular e fácil de manter.
-Adição de tratamento de erros mais detalhado para diferentes cenários de falha.
+Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para enviar pull requests com melhorias ou correções.
 
+Licença
+Este projeto está licenciado sob a MIT License.
