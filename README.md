@@ -2,9 +2,7 @@
 
 Este projeto em Python automatiza a coleta de dados de indisponibilidade do sistema de monitoramento Zabbix. Ele gera um relatório detalhado de 30 dias que documenta todo o período de indisponibilidade de um monitoramento específico.
 
-## Descrição
-
-O objetivo deste script é conectar-se ao banco de dados do Zabbix, executar uma consulta SQL para extrair informações precisas sobre indisponibilidades registradas no sistema, e formatar esses dados em um arquivo CSV estruturado. O arquivo CSV é então enviado automaticamente por email aos destinatários configurados, proporcionando uma visão clara e detalhada do histórico de falhas de monitoramento.
+---
 
 ## Funcionalidades
 
@@ -13,10 +11,14 @@ O objetivo deste script é conectar-se ao banco de dados do Zabbix, executar uma
 - Envio automatizado por email do arquivo CSV gerado como anexo usando `smtplib`.
 - Registro detalhado de logs para monitoramento da execução do script e captura de erros.
 
+---
+
 ## Requisitos
 
 - Python 3.x
 - Bibliotecas Python: `mysql-connector-python`, `secure-smtplib`
+
+---
 
 ## Configuração
 
@@ -24,23 +26,18 @@ O objetivo deste script é conectar-se ao banco de dados do Zabbix, executar uma
 
    Configure as variáveis no arquivo `config.py` com os detalhes de conexão ao banco de dados do Zabbix.
 
-   Exemplo de `config.py`:
-
    ```python
    MYSQL_CONFIG = {
        'host': 'seu_host_zabbix',
        'database': 'nome_banco_zabbix',
        'user': 'seu_usuario_zabbix',
        'password': 'sua_senha_zabbix'
-   }
+   }           
 
 Configurações do Servidor SMTP:
 
-Configure as variáveis no arquivo config.py com os detalhes do servidor SMTP para enviar os relatórios por email.
-
-Exemplo de config.py:
-
-EMAIL_CONFIG = {
+Configure as variáveis no arquivo config.py com os detalhes do servidor SMTP para enviar os relatórios por email.  
+   EMAIL_CONFIG = {
     'smtp_server': 'smtp.servidor.com',
     'smtp_port': 587,
     'username': 'seu_email@example.com',
@@ -49,41 +46,30 @@ EMAIL_CONFIG = {
     'recipients': ['destinatario1@example.com', 'destinatario2@example.com']
 }
 
-Arquivos de Log e CSV:
+   Arquivos de Log e CSV:
 
 Configure as variáveis no arquivo config.py com os caminhos dos arquivos de log e CSV.
-
-Exemplo de config.py:
-
-FILE_CONFIG = {
+   FILE_CONFIG = {
     'log_file': 'logs/arquivo_de_log.txt',
     'csv_file': 'resultado_indisponibilidade.csv'
 }
 
-Instalação
-Clone o repositório:
+   Instalação
+Clone o repositório: git clone https://github.com/seu-usuario/nome-do-repositorio.git
 
-bash
-Copiar código
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
-Navegue até o diretório do projeto:
+   Navegue até o diretório do projeto:   cd nome-do-repositorio
 
-bash
-Copiar código
-cd nome-do-repositorio
-Instale as dependências necessárias:
+   Instale as dependências necessárias:    pip install -r requirements.txt
 
-bash
-Copiar código
-pip install -r requirements.txt
-Uso
-Para executar o script e gerar o relatório de indisponibilidade do Zabbix, utilize o seguinte comando:
+   Uso
+Para executar o script e gerar o relatório de indisponibilidade do Zabbix, utilize o seguinte comando:   python main.py
 
-bash
-Copiar código
-python main.py
-Contribuições
-Contribuições são bem-vindas! Sinta-se à vontade para enviar pull requests com melhorias ou correções.
 
-Licença
+
+   Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para enviar pull requests com melhorias ou correções.   
+
+      Licença
 Este projeto está licenciado sob a MIT License.
+
+   
